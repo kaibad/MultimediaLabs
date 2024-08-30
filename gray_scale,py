@@ -1,0 +1,29 @@
+import cv2
+import numpy as np
+
+# Corrected the quotes and file name
+img = cv2.imread('Kailash.jpg')
+
+# Check if the image is loaded successfully
+if img is None:
+    print("Error: Image not found or unable to load.")
+    exit()
+
+# Display the original image
+cv2.imshow('Original', img)
+
+# Convert image to grayscale
+gray_image = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
+
+# Converting grayscale image into 3 channels for concatenation
+img2 = np.zeros_like(img)
+img2[:, :, 0] = gray_image
+img2[:, :, 1] = gray_image
+img2[:, :, 2] = gray_image
+
+# Display the grayscale image
+cv2.imshow('Grayimage', img2)
+
+# Wait for a key press and close the image windows
+cv2.waitKey(0)
+cv2.destroyAllWindows()
